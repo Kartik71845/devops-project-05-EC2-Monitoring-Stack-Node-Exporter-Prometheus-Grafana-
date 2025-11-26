@@ -11,8 +11,6 @@ It collects real-time Linux system metrics, stores them as time-series data, and
 
 DevOps Engineer → AWS EC2 Ubuntu → Node Exporter → Prometheus → Grafana → End User
 
-(Insert your architecture diagram image here)
-
 
 ---
 
