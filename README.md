@@ -1,12 +1,62 @@
-# devops-project-05-EC2-Monitoring-Stack-Node-Exporter-Prometheus-Grafana-
 
-✅ Setup Instructions — EC2 Monitoring Stack (Node Exporter + Prometheus + Grafana)
+DevOps Project 05 — EC2 Monitoring Stack (Node Exporter + Prometheus + Grafana)
+
+This project demonstrates how to monitor an AWS EC2 Ubuntu instance using Node Exporter, Prometheus, and Grafana.
+It collects real-time Linux system metrics, stores them as time-series data, and visualizes everything through Grafana dashboards.
+
+
+---
+
+🔧 Architecture Overview
+
+DevOps Engineer → AWS EC2 Ubuntu → Node Exporter → Prometheus → Grafana → End User
+
+(Insert your architecture diagram image here)
+
+
+---
+
+⭐ Features
+
+Monitor CPU, RAM, Disk, Network, Uptime using Node Exporter
+
+Prometheus scrapes metrics at regular intervals
+
+Time-series metrics stored and accessible through Prometheus UI
+
+Grafana visualizes metrics using advanced dashboards
+
+All services run on a single EC2 instance
+
+Systemd services ensure Prometheus + Node Exporter run in background
+
+
+
+---
+
+🛠 Tools & Technologies
+
+AWS EC2 (Ubuntu)
+
+Node Exporter
+
+Prometheus
+
+Grafana
+
+Systemd services
+
+Linux CLI
+
+---
+
+🚀 Setup Instruction
+
+---
 
 📌 1. Launch EC2 (Ubuntu)
 
-Ubuntu 22.04 (recommended)
-
-Open these inbound ports in your Security Group:
+Allow inbound ports:
 
 22 → SSH
 
@@ -15,6 +65,7 @@ Open these inbound ports in your Security Group:
 9090 → Prometheus
 
 3000 → Grafana
+
 
 
 ---
@@ -59,8 +110,8 @@ sudo systemctl enable node_exporter
 sudo systemctl start node_exporter
 sudo systemctl status node_exporter
 
-Node Exporter metrics:
-👉 http://EC2-IP:9100/metrics
+Node Exporter UI:
+http://EC2-IP:9100/metrics
 
 
 ---
@@ -78,7 +129,7 @@ sudo mv prometheus-2.48.1.linux-amd64 /etc/prometheus
 
 sudo nano /etc/prometheus/prometheus.yml
 
-Add this block:
+Add:
 
 scrape_configs:
   - job_name: 'prometheus'
@@ -114,7 +165,7 @@ sudo systemctl start prometheus
 sudo systemctl status prometheus
 
 Prometheus UI:
-👉 http://EC2-IP:9090
+http://EC2-IP:9090
 
 
 ---
@@ -136,45 +187,30 @@ sudo systemctl start grafana-server
 sudo systemctl status grafana-server
 
 Grafana UI:
-👉 http://EC2-IP:3000
-Login → admin / admin
+http://EC2-IP:3000
+Login: admin / admin
 
 
 ---
 
-📊 12. Connect Prometheus to Grafana
-
-Go to Grafana → Data Sources → Add Data Source
-
-Select Prometheus
-
-Set URL:
-
-
-http://localhost:9090
-
-Save & Test
-
-
-
----
-
-📈 13. Import Dashboards
+📈 12. Import Dashboards
 
 From Grafana → Dashboards → Import:
 
-Node Exporter Full – ID: 1860
+Node Exporter Full — ID: 1860
 
-Prometheus 2.0 Stats – ID: 3662
+Prometheus 2.0 Stats — ID: 3662
 
-
-Now your monitoring dashboards are ready.
 
 
 ---
 
 🎉 Project Completed
 
-You now have a full monitoring pipeline:
+✔ EC2 metrics monitored
+✔ Node Exporter running as service
+✔ Prometheus scraping metrics
+✔ Grafana visualizing dashboards
 
-EC2 → Node Exporter → Prometheus → Grafana → Dashboards
+Your monitoring pipeline is fully operational.
+
